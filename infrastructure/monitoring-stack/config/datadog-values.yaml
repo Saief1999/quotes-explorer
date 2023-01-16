@@ -1,0 +1,10 @@
+datadog:
+  apiKey: ${apiKey}
+  site: datadoghq.eu
+  
+  kubelet:
+    tlsVerify: false # needed if working with azure
+  
+  logs: 
+    enabled: true #enable logs
+    containerCollectAll: true # collect logs of all containers

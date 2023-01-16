@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{.Values.env}}-quotes-microservice-service"
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+spec:
+  ports:
+  - port: {{ .Values.http.port }}
+    targetPort: {{ .Values.http.containerPort }}
+    protocol: TCP
+  selector:
+    app: "{{.Values.env}}-quotes-microservice-deployment"

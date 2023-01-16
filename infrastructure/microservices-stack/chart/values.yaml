@@ -1,0 +1,32 @@
+# # Default values for chart.
+# # This is a YAML-formatted file.
+# # Declare variables to be passed into your templates.
+
+image:
+  name: saief1999/quotes-microservice
+  tag: latest
+
+http:
+  containerPort: 5000
+  port: 80
+
+# image:
+#   name: nginx
+#   tag: latest
+
+# http:
+#   port: 80
+
+deployment:
+  replicas: 1
+
+env: dev
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+

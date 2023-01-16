@@ -1,0 +1,4 @@
+auth:
+  databases: ["quotes-db"]
+  usernames: ["admin"]
+  passwords: ["admin"]
