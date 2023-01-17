@@ -3,3 +3,9 @@ output "kube_config" {
 
   sensitive = true
 }
+
+# output "ingress-namesapce-id" {
+#   description = "namsepace ID"
+#   value       = kubernetes_namespace.quotes-ingress-namespace.id
+# }
+

@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "${env}-quotes-argocd-ingress"
+  annotations:
+    # nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    # nginx.ingress.kubernetes.io/rewrite-target: "/$2"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: argocd.devops.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: "argo-cd-argocd-server"
+            port:
+              number: 80
+        path: /
+        pathType: Prefix

@@ -16,8 +16,6 @@ resource "kubernetes_namespace" "quotes-monitoring-namespace" {
   }
 }
 
-
-
 resource "helm_release" "quotes-prometheus" {
   name       = "${local.env_prefix}-prometheus"
   repository = "https://prometheus-community.github.io/helm-charts"
@@ -39,4 +37,17 @@ resource "helm_release" "quotes-datadog" {
   chart      = "datadog"
   values     = [data.template_file.quotes-datadog-template.rendered]
   namespace  = kubernetes_namespace.quotes-monitoring-namespace.id
+}
+
+data "template_file" "quotes-monitoring-ingress" {
+  template = file("${path.module}/config/ingress.yaml")
+  vars = {
+    "env" = "${var.environment}"
+  }
+}
+
+
+resource "kubectl_manifest" "quotes-monitoring-ingress-manifest" {
+  yaml_body = data.template_file.quotes-monitoring-ingress.rendered
+  override_namespace = kubernetes_namespace.quotes-monitoring-namespace.id
 }
