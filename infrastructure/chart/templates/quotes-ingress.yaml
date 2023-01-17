@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: "${env}-quotes-microservice-ingress"
+  name: "{{.Values.env}}-quotes-microservice-ingress"
   annotations:
     # nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/use-regex: "true"
@@ -14,7 +14,7 @@ spec:
       paths:
       - backend:
           service:
-            name: "${env}-quotes-microservice-service"
+            name: "{{.Values.env}}-quotes-microservice-service"
             port:
               number: {{ .Values.http.port | int }}
         path: /
