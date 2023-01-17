@@ -4,7 +4,6 @@ metadata:
   name: "{{.Values.env}}-quotes-microservice"
 spec:
   destination:
-    name: ''
     namespace: "{{.Values.env}}-microservices-namespace"
     server: 'https://kubernetes.default.svc'
   source:
@@ -12,6 +11,7 @@ spec:
     repoURL: 'https://github.com/Saief1999/quotes-explorer'
     targetRevision: HEAD
     helm:
+      releaseName: mychart
       valueFiles:
         - values.yaml
   project: default

@@ -22,7 +22,7 @@ resource "helm_release" "argo" {
   namespace  = kubernetes_namespace.quotes-argocd-namespace.id
 }
 
-resource "helm_release" "quotes-microservices" {
+resource "helm_release" "quotes-argocd-app" {
   name      = "${local.env_prefix}-argocd-chart"
   chart     = "${path.module}/chart"
   namespace = kubernetes_namespace.quotes-argocd-namespace.id
