@@ -42,4 +42,4 @@ We used structured logs and we configured the microservice to send them to `Data
 
 ### Tracing
 
-We Integrated openTelemetry logs using `Datadog` for the different endpoints. Also containing the `request_id` and the `client`.
+We Integrated openTelemetry traces using `Datadog` for the different endpoints. Also containing the `request_id` and the `client`.
