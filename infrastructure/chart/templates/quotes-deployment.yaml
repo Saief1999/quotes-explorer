@@ -8,6 +8,7 @@ metadata:
     tags.datadoghq.com/service: quotes-microservice
     tags.datadoghq.com/version: "1"
     admission.datadoghq.com/enabled: "true"
+    version: "1.0"
 spec:
   selector:
     matchLabels:
