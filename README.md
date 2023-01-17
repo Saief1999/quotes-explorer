@@ -36,6 +36,8 @@ a few metrics have been defined that are exposed through `Grafana`:
 - `number_of_request` : Stores the number of requests by **status**.
 - `searched_quotes` : Stores the number of searched quotes by client and name.
 
+In additions to the different metrics exposed using the `node_exporter`
+
 ### Logs
 
 We used structured logs and we configured the microservice to send them to `Datadog`. each log message contains the `request_id`, the `client` in addition to the `span_id`.
