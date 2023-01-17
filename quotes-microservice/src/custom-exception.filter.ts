@@ -26,7 +26,7 @@ import {
       const request = ctx.getRequest<Request>();
       const status = exception.getStatus();
       
-      this.counter.inc({ status, endpoint: request.url, 'req_id':uuidv4()  })
+      this.counter.inc({ status, endpoint: request.url })
   
       response
         .status(status)

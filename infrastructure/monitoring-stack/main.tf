@@ -23,6 +23,7 @@ resource "helm_release" "quotes-prometheus" {
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "kube-prometheus-stack"
   namespace  = kubernetes_namespace.quotes-monitoring-namespace.id
+  values     = [file("${path.module}/config/prometheus-values.yaml")]
 }
 
 data "template_file" "quotes-datadog-template" {

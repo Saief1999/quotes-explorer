@@ -5,9 +5,11 @@ import { ConfigModule } from '@nestjs/config';
 import { makeCounterProvider, PrometheusModule } from '@willsoto/nestjs-prometheus';
 import { APP_FILTER } from '@nestjs/core';
 import { CustomExceptionFilter } from './custom-exception.filter';
+import { LoggerModule } from 'nestjs-pino';
 
 @Module({
   imports: [
+    LoggerModule.forRoot(),
     PrometheusModule.register(),
     ConfigModule.forRoot({
       isGlobal: true
@@ -22,7 +24,7 @@ import { CustomExceptionFilter } from './custom-exception.filter';
     makeCounterProvider({
       name: "number_of_requests",
       help: "counts the number of requests that each endpoint received",
-      labelNames: ['status', 'endpoint', 'req_id']
+      labelNames: ['status', 'endpoint']
     }),
     {
       provide: APP_FILTER,

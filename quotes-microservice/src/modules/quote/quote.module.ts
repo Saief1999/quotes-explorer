@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 import { makeCounterProvider } from "@willsoto/nestjs-prometheus";
+import { LoggerModule } from "nestjs-pino";
 import { Quote, QuoteSchema } from "src/models/quote.model";
 import { QuoteController } from "./quote.controller";
 import { QuoteService } from "./quote.service";
@@ -14,7 +15,7 @@ import { QuoteService } from "./quote.service";
         makeCounterProvider({
             name: "number_of_requests",
             help: "counts the number of requests that each endpoint received",
-            labelNames: ['status', 'endpoint', 'req_id']
+            labelNames: ['status', 'endpoint']
         }),
         makeCounterProvider({
             name: "searched_quotes",

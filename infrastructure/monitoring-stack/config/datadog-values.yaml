@@ -1,10 +1,21 @@
 datadog:
   apiKey: ${apiKey}
   site: datadoghq.eu
-  
+
   kubelet:
     tlsVerify: false # needed if working with azure
-  
-  logs: 
+
+  logs:
     enabled: true #enable logs
     containerCollectAll: true # collect logs of all containers
+
+  # # Enable opentelemetry GRPC receiver
+  # oltp:
+  #   receiver:
+  #     protocols:
+  #       grpc:
+  #         enabled: true
+  apm:
+    # datadog.apm.portEnabled -- Enable APM over TCP communication (port 8126 by default)
+    ## ref: https://docs.datadoghq.com/agent/kubernetes/apm/
+    portEnabled: true

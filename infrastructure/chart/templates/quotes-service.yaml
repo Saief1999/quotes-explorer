@@ -4,9 +4,11 @@ metadata:
   name: "{{.Values.env}}-quotes-microservice-service"
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    app: "{{.Values.env}}-quotes-microservice-service"
 spec:
   ports:
-  - port: {{ .Values.http.port }}
+  - name: web
+    port: {{ .Values.http.port }}
     targetPort: {{ .Values.http.containerPort }}
     protocol: TCP
   selector:
