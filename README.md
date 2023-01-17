@@ -4,6 +4,10 @@
 
 This is a POC for a microservices application that enables CRUD operations on famous **Quotes**.
 
+![](./resources/api.png)
+
+![](./resources/post_api.png)
+
 ## Automation
 
 The whole infrastructure is built With Terraform. The Different components have been distributed into different microstacks.
@@ -18,7 +22,6 @@ The whole infrastructure is built With Terraform. The Different components have 
 
 The actual microservice is defined in a `Helm Chart`  and deployed using `Argocd`.
 
-
 The different stacks have **remote terraform state files**. All saved on Azure, the initial provisioning for the storage account is done in the `terraform-backend` project.
 
 ## Deployment
@@ -27,8 +30,9 @@ The Microservices are deployed using Argocd, the different other components are 
 
 ![Architecture](./resources/architecture.png)
 
+![](./resources/argocd.png)
 
-## Automation
+## Devops
 
 ### Metrics
 
@@ -38,10 +42,22 @@ a few metrics have been defined that are exposed through `Grafana`:
 
 In additions to the different metrics exposed using the `node_exporter`
 
+![](./resources/grafana.png)
+
+![](./resources/grafana_2.png)
+
+![](./resources/prometheus.png)
+
 ### Logs
 
 We used structured logs and we configured the microservice to send them to `Datadog`. each log message contains the `request_id`, the `client` in addition to the `span_id`.
 
+![](./resources/datadog_logs.png)
+
 ### Tracing
 
 We Integrated openTelemetry traces using `Datadog` for the different endpoints. Also containing the `request_id` and the `client`.
+
+![](./resources/traces_1.png)
+
+![](./resources/traces_2.png)
