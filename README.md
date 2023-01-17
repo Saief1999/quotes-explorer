@@ -24,6 +24,7 @@ The actual microservice is defined in a `Helm Chart`  and deployed using `Argocd
 
 The different stacks have **remote terraform state files**. All saved on Azure, the initial provisioning for the storage account is done in the `terraform-backend` project.
 
+
 ## Deployment
 
 The Microservices are deployed using Argocd, the different other components are deployed through terraform each within its respective namespace. Here is the architecture :
@@ -31,6 +32,8 @@ The Microservices are deployed using Argocd, the different other components are 
 ![Architecture](./resources/architecture.png)
 
 ![](./resources/argocd.png)
+
+All resources are prefix with the `env` variable making it easier to migrate the whole infrastructure into production. 
 
 ## Devops
 
